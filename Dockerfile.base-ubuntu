@@ -28,6 +28,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     add-apt-repository -y ppa:costamagnagianfranco/boinc && \
     apt-get update && apt-get install -y --no-install-recommends \
     boinc-client && \
+    apt install wget -y && \
+    apt install distro-info-data lsb-release -y && \
+    wget https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest_all.deb && \
+    dpkg -i cvmfs-release-latest_all.deb && \
+    rm -f cvmfs-release-latest_all.deb && \
+    apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install cvmfs -y && \
 # Cleaning up
     apt-get remove -y software-properties-common && \
     apt-get autoremove -y && \
